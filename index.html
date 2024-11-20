@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Music Queue</title>
+</head>
+<body>
+    <h1>Add Songs to the Playlist</h1>
+    <input type="text" id="song" placeholder="Enter song name" />
+    <button onclick="addSong()">Add Song</button>
+
+    <script>
+        async function addSong() {
+            const song = document.getElementById("song").value;
+            const token = "abc123xyz";  // Replace with dynamic token in real implementation
+
+            if (song) {
+                const response = await fetch(`https://your-api-id.execute-api.us-east-2.amazonaws.com/prod/add-song?token=${token}&song=${song}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ song: song })
+                });
+
+                const data = await response.json();
+                alert(data.message);
+            }
+        }
+    </script>
+</body>
+</html>
