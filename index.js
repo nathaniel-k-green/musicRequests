@@ -9,7 +9,7 @@ async function addSong() {
     }
 
     if (song) {
-        const response = await fetch(`https://e5jhnqnkm6.execute-api.us-east-2.amazonaws.com/prod/musicRequests/add-song`, {
+        const response = await fetch(`https://e5jhnqnkm6.execute-api.us-east-2.amazonaws.com/prod/musicRequests/add-song?token=${token}`, {
             method: 'POST',
             headers: {
                 'x-api-key': '${{ secrets.ADD_SONG_API_KEY }}',
