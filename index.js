@@ -1,8 +1,12 @@
 async function addSong() {
     const song = document.getElementById("song").value;
     const searchParams = new URLSearchParams(window.location.search);
-    const token = searchParams['token'];  // Replace with dynamic token in real implementation
-    console.log(token);
+    if (searchParams.has('token')){
+        const token = searchParams.get('token');  // Replace with dynamic token in real implementation
+        console.log(token);
+    } else {
+        alert("invalid url");
+    }
 
     if (song) {
         const response = await fetch(`https://e5jhnqnkm6.execute-api.us-east-2.amazonaws.com/prod/musicRequests/add-song`, {
